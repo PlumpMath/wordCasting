@@ -19,6 +19,7 @@ public class WordSpell {
     HEALING,
     ILLUSION,
     LANGUAGE,
+    PAIN,
     POWER,
     SONIC,
     TELEPORTATION,

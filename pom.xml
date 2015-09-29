@@ -9,6 +9,14 @@
     <targetVersion>1.7</targetVersion>
   </properties>
 
+  <dependencies>
+    <dependency>
+      <groupId>com.fasterxml.jackson.datatype</groupId>
+      <artifactId>jackson-datatype-jdk7</artifactId>
+      <version>2.4.0</version>
+    </dependency>
+  </dependencies>
+
   <build>
     <plugins>
         <plugin>
