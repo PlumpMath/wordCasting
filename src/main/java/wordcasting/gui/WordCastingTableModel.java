@@ -18,35 +18,10 @@ class WordCastingTableModel extends AbstractTableModel {
     mapper.registerModule(new Jdk7Module());
     mapper.registerModule(new ParameterNamesModule());
 
-    List<WordSpell> tmpdata =
-      Arrays.asList(
-          new WordSpell("Accelerate",
-                        2,
-                        "1 round/level",
-                        WordSpell.Group.TIME),
-          new WordSpell("Cramp",
-                        0,
-                        "1 round",
-                        WordSpell.Group.PAIN));
-    System.out.println("Would write");
-    mapper.
-      writerWithType(new TypeReference<List<WordSpell>>() {}).
-      writeValue(System.out, tmpdata);
-
     data = mapper.readValue(new File("target/classes/spells.json"),
                             new TypeReference<List<WordSpell>>(){});
     System.out.println("read " + data);
 
-    // data =
-    //   Arrays.asList(
-    //       new WordSpell("Accelerate",
-    //                     2,
-    //                     "1 round/level",
-    //                     Group.TIME),
-    //       new WordSpell("Cramp",
-    //                     0,
-    //                     "1 round",
-    //                     Group.PAIN));
 
   }
 
