@@ -1,8 +1,10 @@
 package wordcasting.gui;
 
 
+import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk7.Jdk7Module;
+import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
@@ -14,6 +16,7 @@ class WordCastingTableModel extends AbstractTableModel {
   WordCastingTableModel() throws IOException {
     ObjectMapper mapper = new ObjectMapper();
     mapper.registerModule(new Jdk7Module());
+    mapper.registerModule(new ParameterNamesModule());
 
     List<WordSpell> tmpdata =
       Arrays.asList(
@@ -26,9 +29,12 @@ class WordCastingTableModel extends AbstractTableModel {
                         "1 round",
                         WordSpell.Group.PAIN));
     System.out.println("Would write");
-    mapper.writeValue(System.out, tmpdata);
+    mapper.
+      writerWithType(new TypeReference<List<WordSpell>>() {}).
+      writeValue(System.out, tmpdata);
 
-    data = mapper.readValue(new File("target/classes/spells.json"), List.class);
+    data = mapper.readValue(new File("target/classes/spells.json"),
+                            new TypeReference<List<WordSpell>>(){});
     System.out.println("read " + data);
 
     // data =

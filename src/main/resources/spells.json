@@ -10,6 +10,12 @@
         "name": "Cramp",
         "duration": "1 round",
         "group": "PAIN"
+    },
+    {
+        "level": 1,
+        "name": "Something",
+        "duration": "10 minutes/level",
+        "group": "TIME"
     }
 ]
 
