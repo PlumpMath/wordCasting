@@ -1,21 +1,403 @@
 [
     {
+        "name": "Acid Burn",
+        "level": 0,
+        "duration": "instantaneous",
+        "group": "ACID",
+        "description": "1d3 points of acid damage.",
+        "target": []
+    },
+
+    {
+        "name": "Corrosive Bold",
+        "level": 2,
+        "duration": "2 rounds",
+        "group": "ACID",
+        "description": "1d4/level acid damage (max 5d4).  Repeats on second round.  Ranged touch attack.",
+        "target": [ "SELECTED" ]
+    },
+    {
+        "name": "Acid Wave",
+        "level": 4,
+        "duration": "2 rounds",
+        "group": "ACID",
+        "description": "1d6/level acid damage (max 10d6).  Sickened for 1 round/level, or 1 round on save.",
+        "target": []
+    },
+    {
+        "name": "Caustic Cloud",
+        "level": 6,
+        "duration": "1 round/level",
+        "group": "ACID",
+        "description": "Cloud that obscures vision.  1d6/level acid damage (max 20d6) and fatigued.",
+        "target": [ "BURST" ]
+    },
+    {
+        "name": "Alignment Shield",
+        "level": 1,
+        "duration": "1 minute/level",
+        "group": "ALIGNMENT",
+        "description": "+2 AC, +2 saves vs. alignment.  End spell to reroll save.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Alignment Assault",
+        "level": 5,
+        "duration": "Instantaneous (see text)",
+        "group": "ALIGNMENT",
+        "description": "1d8/2 level damage to aligned creatures. 1d6/level to outsiders.  Staggered for 1 round/level on failed save.",
+        "target": ["BURST", "CONE", "LINE"]
+    },
+    {
+        "name": "Alignment Aura",
+        "level": 8,
+        "duration": "1 round/level",
+        "group": "ALIGNMENT",
+        "description": "+4 AC and saves.  SR 25.  2d6 damaged if hit.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Nature's Calm",
+        "level": 1,
+        "duration": "1 minute/level",
+        "group": "ANIMAL",
+        "description": "Animal or magical beast will not attack.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Wild Lure",
+        "level": 2,
+        "duration": "1 minute/level",
+        "group": "ANIMAL",
+        "description": "Animal or magical beast defends caster and will not attack allies.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Nature's Command",
+        "level": 4,
+        "duration": "1 round/level",
+        "group": "ANIMAL",
+        "description": "Animal or magical beast obeys commands",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Force Block",
+        "level": 0,
+        "duration": "1 round",
+        "group": "ARMOR",
+        "description": "+1 force armor AC.  Boost: immediate action, +1 level",
+        "target": ["SELECTED", "PERSONAL"]
+    },
+    {
+        "name": "Lock Ward",
+        "level": 1,
+        "duration": "permanent",
+        "group": "BINDING",
+        "description": "Closes an object.  Other effects are delayed until object is opened.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Force Shield",
+        "level": 1,
+        "duration": "1 minute/level",
+        "group": "ARMOR",
+        "description": "+4 force armor",
+        "target": ["PERSONAL", "SELECTED"]
+    },
+
+    {
+        "name": "Force Armor",
+        "level": 3,
+        "duration": "10 minutes/level",
+        "group": "ARMOR",
+        "description": "+4+1/4 level force armor, or +1 to another armor source",
+        "target": ["PERSONAL", "SELECTED"]
+    },
+    {
+        "name": "Force Ward",
+        "level": 6,
+        "duration": "10 minutes/level",
+        "group": "ARMOR",
+        "description": "+6 + 1/4 levels force armor or +2 to another armor source.",
+        "target": []
+    },
+    {
+        "name": "Paralyze Humanoid",
+        "level": 3,
+        "duration": "1 round/level",
+        "group": "BINDING",
+        "description": "Paralyze a humanoid.  Save at end of each turn.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Paralyze Creature",
+        "level": 5,
+        "duration": "1 round/level",
+        "group": "BINDING",
+        "description": "Paralyze any creature.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Permanent Paralysis",
+        "level": 8,
+        "duration": "permanent",
+        "group": "BINDING",
+        "description": "Paralyze creature.  Only one additional save.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Fortify",
+        "level": 1,
+        "duration": "1 round/level",
+        "group": "BODY",
+        "description": "+1 saves, +1 temporary hit point/hit die",
+        "target": ["PERSONAL", "SELECTED"]
+    },
+    {
+        "name": "Energy Resistance",
+        "level": 2,
+        "duration": "10 minutes/level",
+        "group": "BODY",
+        "description": "Resistance 10 to one energy type.",
+        "target": ["PERSONAL", "SELECTED"]
+    },
+    {
+        "name": "Enhance Form",
+        "level": 2,
+        "duration": "1 round/level",
+        "group": "BODY",
+        "description": "+4 to one physical stat.  End to gain +8",
+        "target": ["PERSONAL", "SELECTED"]
+    },
+    {
+        "name": "Perfect Form",
+        "level": 4,
+        "duration": "1 round/level",
+        "group": "BODY",
+        "description": "+4 Str, Dex, Con",
+        "target": ["SELECTED", "PERSONAL"]
+    },
+    {
+        "name": "Energy Immunity",
+        "level": 6,
+        "duration": "1 round/level",
+        "group": "BODY",
+        "description": "Immune to one type of energy",
+        "target": ["PERSONAL", "SELECTED"]
+    },
+    {
+        "name": "Altered Form",
+        "level": 3,
+        "duration": "1 minute/level",
+        "group": "CHANGE",
+        "description": "+2 Str(size), 2 of claws, bite, climb speed, swim speed, darkvision, low-light vision, scent, +2 natural armor, boost: 3 effects or Selected target",
+        "target": ["PERSONAL"]
+    },
+    {
+        "name": "Bestial Form",
+        "level": 4,
+        "duration": "1 minute/level",
+        "group": "CHANGE",
+        "description": "+4 Str and 3 of Altered Form or fly, grab, pounce, trip, +4 nat armor.  Boost: 4 benefits or Selected target",
+        "target": ["PERSONAL"]
+    },
+    {
+        "name": "Monstrous Form",
+        "level": 5,
+        "duration": "1 minute/level",
+        "group": "CHANGE",
+        "description": "Better Bestial Form",
+        "target": ["PERSONAL"]
+    },
+    {
+        "name": "Cold Snap",
+        "level": 0,
+        "duration": "instantaneous",
+        "group": "COLD",
+        "description": "1d3 cold damage",
+        "target": []
+    },
+    {
+        "name": "Frost Fingers",
+        "level": 2,
+        "duration": "instantaneous",
+        "group": "COLD",
+        "description": "1d6/level cold and staggered for 1 round",
+        "target": []
+    },
+    {
+        "name": "Ice Blast",
+        "level": 4,
+        "duration": "instantaneous",
+        "group": "COLD",
+        "description": "1d6/level cold damage.  Entangled for 1d4 rounds.",
+        "target": []
+    },
+    {
+        "name": "Winter's Wrath",
+        "level": 8,
+        "duration": "1 round/level",
+        "group": "COLD",
+        "description": "Creates blizzard.  1d6/level cold and 1d4 Dex damage. 5 feet visibility.  Fire immunity.",
+        "target": ["BURST"]
+    },
+    {
+        "name": "Friendship",
+        "level": 1,
+        "duration": "10 minute/level",
+        "group": "COMMAND",
+        "description": "Caster is trusted ally.  Defends caster and will not attack allies.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Simple Order",
+        "level": 1,
+        "duration": "1 round",
+        "group": "COMMAND",
+        "description": "Approach, Drop, Fall, Flee or Halt.  Boost: any target word, +3 levels.",
+        "target": ["SELECTED"]
+    },
+
+
+
+    {
         "name": "Accerate",
         "level": 2,
         "duration": "1 round/level",
-        "group": "TIME"
+        "group": "TIME",
+        "description": "Extra move action.  Boost: Extra attack during full attack instead of extra move.",
+        "target": ["SELECTED"]
     },
     {
         "level": 0,
         "name": "Cramp",
         "duration": "1 round",
-        "group": "PAIN"
+        "group": "PAIN",
+        "description": "Speed reduced by half",
+        "target": []
     },
     {
+        "name": "Fade",
         "level": 1,
-        "name": "Something",
+        "duration": "1 round",
+        "group": "CONCEALING",
+        "description": "Invisibly until attacks.  Boost: remains invisible if attacks.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Disappear",
+        "level": 2,
+        "duration": "1 round/level",
+        "group": "CONCEALING",
+        "description": "Invisble until attacks. Boost: remains invisible if attacks.  +2 levels.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Undeath",
+        "level": 3,
+        "duration": "instead",
+        "group": "DEATH",
+        "description": "Target becomes skeleton or zombie.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Sense Hidden",
+        "level": 2,
+        "duration": "Concentration, up to 1 minute/level",
+        "group": "DETECTION",
+        "description": "See invisible creatures and object.  Boost: see through illusions, polymorph and concealment.  +4 save vs illusion, +4 levels",
+        "target": ["CONE"]
+    },
+    {
+        "name": "Suppress",
+        "level": 2,
+        "duration": "1 minute/level",
+        "group": "DISPELLING",
+        "description": "Suppress one spell on a willing target with caster level check.  Boost: target unwilling creature, +1 level",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Far Sight",
+        "level": 3,
+        "duration": "1 minute/level",
+        "group": "DIVINATION",
+        "description": "Create sensor at long range to use senses, including spells.  Boost: anywhere on plane near known creature.  +2 levels.",
+        "target": ["PERSONAL"]
+    },
+    {
+        "name": "Locate",
+        "level": 6,
         "duration": "10 minutes/level",
-        "group": "TIME"
+        "group": "DIVINATION",
+        "description": "Know fastest path to a known location.",
+        "target": ["PERSONAL"]
+    },
+    {
+        "name": "Spark",
+        "level": 0,
+        "duration": "instantaneous",
+        "group": "ELECTRICITY",
+        "description": "1d4 electricity damage",
+        "target": []
+    },
+    {
+        "name": "Shock Arc",
+        "level": 1,
+        "duration": "instantaneous",
+        "group": "ELECTRICITY",
+        "description": "1d4/level electricity damage",
+        "target": []
+    },
+    {
+        "name": "Lightening Blast",
+        "level": 3,
+        "duration": "instantaneous",
+        "group": "ELECTRICITY",
+        "description": "1d6/level electricity damage",
+        "target": []
+    },
+    {
+        "name": "Ball Lightening",
+        "level": 5,
+        "duration": "instantaneous",
+        "group": "ELECTRICITY",
+        "description": "1d8/level electricity damage to one target and half to others",
+        "target": []
+    },
+    {
+        "name": "Terror",
+        "level": 4,
+        "duration": "1 round/level",
+        "group": "FEAR",
+        "description": "Target is frightened.  Save for shaken for 1 round",
+        "target": []
+    },
+    {
+        "name": "Horror",
+        "level": 7,
+        "duration": "instantaneous",
+        "group": "FEAR",
+        "description": "10/level damage.  Save for 3d6+1/level",
+        "target": []
+    },
+    {
+        "name": "Flame Jet",
+        "level": 0,
+        "duration": "instantaneous",
+        "group": "FIRE",
+        "description": "1d4 fire damage",
+        "target": []
+    },
+
+
+    {
+        "name": "Unmake",
+        "level": 5,
+        "duration": "instantaneous",
+        "group": "DISPELLING",
+        "description": "Dispell all spells on willing target.",
+        "target": ["SELECTED"]
     }
+
 ]
 

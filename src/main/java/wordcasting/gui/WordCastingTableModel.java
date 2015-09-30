@@ -8,6 +8,7 @@ import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
 import java.io.File;
 import java.io.IOException;
 import java.util.Arrays;
+import java.util.Collections;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
 import wordcasting.model.WordSpell;
@@ -20,6 +21,16 @@ class WordCastingTableModel extends AbstractTableModel {
 
     data = mapper.readValue(new File("target/classes/spells.json"),
                             new TypeReference<List<WordSpell>>(){});
+    Collections.sort(data, (first, second) -> {
+        int delta = first.getLevel() - second.getLevel();
+        if (delta == 0) {
+          return first.getName().compareTo(second.getName());
+        } else {
+          return delta;
+        }
+      });
+
+
     System.out.println("read " + data);
 
 
@@ -33,31 +44,26 @@ class WordCastingTableModel extends AbstractTableModel {
 
   @Override
   public int getColumnCount() {
-    return 3;
+    return 4;
   }
 
   @Override
   public Object getValueAt(int row, int column) {
-    WordSpell spell = data.get(row);
-    switch (column) {
-    case 0: return spell.getName();
-    case 1: return spell.getLevel();
-    case 2: return spell.getDuration();
-    default:
-      throw new IllegalArgumentException("Bad column number: " + column);
-    }
+    return data.get(row);
   }
 
   @Override
   public String getColumnName(int column) {
     switch (column) {
-    case 0: return "Name";
-    case 1: return "Level";
+    case 0: return "Level";
+    case 1: return "Name";
     case 2: return "Duration";
+    case 3: return "Targets";
     default:
       throw new IllegalArgumentException("Bad column number: " + column);
     }
   }
+
 
   private final List<WordSpell> data;
 }
