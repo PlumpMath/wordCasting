@@ -244,7 +244,7 @@
     {
         "name": "Friendship",
         "level": 1,
-        "duration": "10 minute/level",
+        "duration": "10 minutes/level",
         "group": "COMMAND",
         "description": "Caster is trusted ally.  Defends caster and will not attack allies.",
         "target": ["SELECTED"]
@@ -295,7 +295,7 @@
     {
         "name": "Undeath",
         "level": 3,
-        "duration": "instead",
+        "duration": "instantaneous",
         "group": "DEATH",
         "description": "Target becomes skeleton or zombie.",
         "target": ["SELECTED"]
