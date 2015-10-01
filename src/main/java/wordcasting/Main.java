@@ -2,12 +2,14 @@ package wordcasting;
 
 import java.io.IOException;
 import wordcasting.gui.Gui;
+import wordcasting.model.Model;
 
 public class Main {
   private final Gui gui;
 
   public Main() throws IOException {
-    gui = new Gui();
+    Model model = new Model();
+    gui = new Gui(model);
   }
 
   public void run() {

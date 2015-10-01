@@ -1,26 +1,22 @@
 package wordcasting.gui;
 
 
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
-import com.fasterxml.jackson.datatype.jdk7.Jdk7Module;
-import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
-import java.io.File;
-import java.io.IOException;
-import java.util.Arrays;
+import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Collections;
 import java.util.List;
 import javax.swing.table.AbstractTableModel;
+import wordcasting.model.Model;
 import wordcasting.model.WordSpell;
 
 class WordCastingTableModel extends AbstractTableModel {
-  WordCastingTableModel() throws IOException {
-    ObjectMapper mapper = new ObjectMapper();
-    mapper.registerModule(new Jdk7Module());
-    mapper.registerModule(new ParameterNamesModule());
+  WordCastingTableModel(Model model) {
+    spells = sortSpells(model.getSpells().values());
+  }
 
-    data = mapper.readValue(new File("target/classes/spells.json"),
-                            new TypeReference<List<WordSpell>>(){});
+  private List<WordSpell> sortSpells(Collection<WordSpell> spells) {
+    List<WordSpell> data = new ArrayList<WordSpell>(spells);
+
     Collections.sort(data, (first, second) -> {
         int delta = first.getLevel() - second.getLevel();
         if (delta == 0) {
@@ -30,40 +26,30 @@ class WordCastingTableModel extends AbstractTableModel {
         }
       });
 
-
-    System.out.println("read " + data);
-
-
+    return data;
   }
 
   @Override
   public int getRowCount() {
-    return data.size();
+    return spells.size();
   }
 
 
   @Override
   public int getColumnCount() {
-    return 4;
+    return WordSpellColumns.values().length;
   }
 
   @Override
   public Object getValueAt(int row, int column) {
-    return data.get(row);
+    return spells.get(row);
   }
 
   @Override
   public String getColumnName(int column) {
-    switch (column) {
-    case 0: return "Level";
-    case 1: return "Name";
-    case 2: return "Duration";
-    case 3: return "Targets";
-    default:
-      throw new IllegalArgumentException("Bad column number: " + column);
-    }
+    return WordSpellColumns.values()[column].toString();
   }
 
 
-  private final List<WordSpell> data;
+  private final List<WordSpell> spells;
 }

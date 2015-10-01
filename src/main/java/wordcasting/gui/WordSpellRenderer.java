@@ -41,26 +41,11 @@ public class WordSpellRenderer
                                                  int column)
   {
     WordSpell spell = (WordSpell) value;
-    String text;
-    switch (column) {
-    case 0: text = Integer.toString(spell.getLevel()); break;
-    case 1: text = spell.getName(); break;
-    case 2: text = spell.getDuration(); break;
-    case 3:
-      if (spell.getTarget().size() == Target.values().length) {
-        text = "Any";
-      } else {
-        text = spell.getTarget().toString();
-      }
-      break;
-
-    default:
-      throw new IllegalArgumentException("Unknown column: " + column);
-    }
+    WordSpellColumns which = WordSpellColumns.values()[column];
+    String text = which.getDisplayValue(spell);
     setText(text);
     setBackground(colors.get(spell.getGroup()));
     setToolTipText(spell.getDescription());
-    System.out.println("Renderer: " + this);
     return this;
   }
 
