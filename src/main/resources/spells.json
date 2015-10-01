@@ -391,6 +391,320 @@
 
 
     {
+        "name": "Burning Flash",
+        "level": 1,
+        "duration": "instantaneous",
+        "group": "FIRE",
+        "description": "1d4/level fire damage.  Boost(sorc/wiz): 1d6/level, +1 level",
+        "target": []
+    },
+{
+        "name": "Fire Blast",
+        "level": 3,
+        "duration": "instantaneous",
+        "group": "FIRE",
+        "description": "1d6/level fire damage",
+        "target": []
+    },
+{
+        "name": "Cinder Storm",
+        "level": 5,
+        "duration": "instantaneous",
+        "group": "FIRE",
+        "description": "1d6/level fire",
+        "target": []
+    },
+    {
+        "name": "Unfetter",
+        "level": 6,
+        "duration": "1 round/level",
+        "group": "GRAVITY",
+        "description": "Reverses gravity",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Soothing Touch",
+        "level": 0,
+        "duration": "instantaneous",
+        "group": "HEALING",
+        "description": "Dying target is stablized.  Boost: remove shaken, sickened or fatigued.  +1 level",
+        "target": ["PERSONAL", "SELECTED"]
+    },
+    {
+        "name": "Lesser Cure",
+        "level": 1,
+        "duration": "instantaneous",
+        "group": "HEALING",
+        "description": "Head 1d6+1/level healing.  Boost: 1d8+1/level",
+        "target": ["PERSONAL", "SELECTED"]
+    },
+    {
+        "name": "Moderate Cure",
+        "level": 2,
+        "duration": "instantaneous",
+        "group": "HEALING",
+        "description": "2d6+1/level healing.  Boost: 2d8+1/level",
+        "target": ["PERSONAL", "SELECTED"]
+    },
+    {
+        "name": "Greater Cure",
+        "level": 3,
+        "duration": "instantaneous",
+        "group": "HEALING",
+        "description": "3d6+1/level healing. Boost: 3d8+1/level",
+        "target": ["PERSONAL", "SELECTED"]
+    },
+    {
+        "name": "Elder Cure",
+        "level": 4,
+        "duration": "instantaneous",
+        "group": "HEALING",
+        "description": "4d6+1/level healing.  Boost: 4d8+1/level",
+        "target": ["PERSONAL", "SELECTED"]
+    },
+    {
+        "name": "Radiance",
+        "level": 1,
+        "duration": "10 minutes/level",
+        "group": "ILLUMINATION",
+        "description": "Light like a torch at a fixed location.",
+        "target": ["BURST"]
+    },
+    {
+        "name": "GLOOM",
+        "level": 2,
+        "duration": "1 minute/level",
+        "group": "ILLUMINATION",
+        "description": "20 feet darkness, reducing light by one step",
+        "target": ["BURST"]
+    },
+    {
+        "name": "Sunshine",
+        "level": 3,
+        "duration": "10 minutes/level",
+        "group": "ILLUMINATION",
+        "description": "30 feet light increases by one step",
+        "target": ["BURST"]
+    },
+    {
+        "name": "Purify",
+        "level": 4,
+        "duration": "instantaneous",
+        "group": "LIFE",
+        "description": "Remove curses, diseases or posion. New saving throw.  Or remove 1d4 temporary negative levels or 1 permanent negative level.",
+        "target": ["PERSONAL", "SELECTED"]
+    },
+    {
+        "name": "Revive",
+        "level": 5,
+        "duration": "instantaneous",
+        "group": "LIFE",
+        "description": "Raises dead target",
+        "target": []
+    },
+    {
+        "name": "Cramp",
+        "level": 0,
+        "duration": "1 round",
+        "group": "PAIN",
+        "description": "Reduce base speed by half",
+        "target": []
+    },
+    {
+        "name": "Wrack",
+        "level": 1,
+        "duration": "1 round/level",
+        "group": "PAIN",
+        "description": "Sickened",
+        "target": []
+    },
+    {
+        "name": "Torture",
+        "level": 3,
+        "duration": "1 round/level",
+        "group": "PAIN",
+        "description": "nauseated.  Additional save at end of turn.",
+        "target": []
+    },
+    {
+        "name": "Blind",
+        "level": 7,
+        "duration": "rounds to permanent",
+        "group": "POWER",
+        "description": "Blinds target",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Stun",
+        "level": 8,
+        "duration": "rounds",
+        "group": "POWER",
+        "description": "Stuns target",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Kill",
+        "level": 9,
+        "duration": "instantaneous",
+        "group": "POWER",
+        "description": "Kills target with less than 101 hit points.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Discordant Note",
+        "level": 2,
+        "duration": "instantaneous",
+        "group": "SONIC",
+        "description": "1d4/level sonic damage, staggers for 1 round",
+        "target": []
+    },
+    {
+        "name": "Sound Blast",
+        "level": 4,
+        "duration": "instantaneous",
+        "group": "SONIC",
+        "description": "1d6/level sonic damage",
+        "target": []
+    },
+    {
+        "name": "Destructive Vibration",
+        "level": 7,
+        "duration": "instantaneous, 1 round/level",
+        "group": "SONIC",
+        "description": "1d6/level sonic damage, deafens for 1 round/level",
+        "target": ["LINE"]
+    },
+    {
+        "name": "Dimensional Hop",
+        "level": 3,
+        "duration": "instantaneous",
+        "group": "TELEPORTATION",
+        "description": "Teleports willing target within line of sight and spell range",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "DimensionalJump",
+        "level": 5,
+        "duration": "instantaneous",
+        "group": "TELEPORTATION",
+        "description": "Telerports willing target within same plane.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Dimensional Shift",
+        "level": 7,
+        "duration": "instantaneous",
+        "group": "TELEPORTATION",
+        "description": "Teleports willing targets to another plane",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Fleet",
+        "level": 1,
+        "duration": "1 hour/level",
+        "group": "TIME",
+        "description": "Increase base land speed by 10",
+        "target": ["PERSONAL"]
+    },
+    {
+        "name": "Dash",
+        "level": 1,
+        "duration": "1 minute/level",
+        "group": "TIME",
+        "description": "Incrase base land speed by 30",
+        "target": ["PERSONAL"]
+    },
+    {
+        "name": "Decelerate",
+        "level": 2,
+        "duration": "instantaneous",
+        "group": "TIME",
+        "description": "Target is staggered.  New save at end of each turn.  Boost: target does not get an additional save.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Predict",
+        "level": 2,
+        "duration": "instantaneous",
+        "group": "TIME",
+        "description": "Predict good/bad results for 1 hour into the future",
+        "target": ["PERSONAL"]
+    },
+    {
+        "name": "Borrow Future",
+        "level": 4,
+        "duration": "instantaneous",
+        "group": "TIME",
+        "description": "Target moves now, skips next turn.  Boost: target is staggered on next turn.",
+        "target": []
+    },
+    {
+        "name": "Wind Wall",
+        "level": 3,
+        "duration": "1 round/leveln",
+        "group": "WALL",
+        "description": "Wall blocks ranged attacks, is difficult terrain.",
+        "target": ["BARRIER"]
+    },
+    {
+        "name": "Fire Wall",
+        "level": 4,
+        "duration": "1 round/level",
+        "group": "WALL",
+        "description": "Wall of fire deals 2d6+1/level fire damage to those passing through.  Block line of sight.",
+        "target": ["BARRIER"]
+    },
+    {
+        "name": "Ice Wall",
+        "level": 4,
+        "duration": "1 round/level",
+        "group": "WALL",
+        "description": "Wall of ice.  1 inch/level thick, 3 hp/level.  Blocks line of sight.",
+        "target": ["BARRIER"]
+    },
+    {
+        "name": "Stone Wall",
+        "level": 5,
+        "duration": "1 round/level",
+        "group": "WALL",
+        "description": "Stone wall.  1 inch/level thick, hardness 8, 15 hp/inch.  Block line of sight",
+        "target": ["BARRIER"]
+    },
+    {
+        "name": "Blade Wall",
+        "level": 6,
+        "duration": "1 round/level",
+        "group": "WALL",
+        "description": "Wall of blades.  Deals 1d6/level damage to creatures in contact.  Provides cover by does not block line of sight",
+        "target": []
+    },
+    {
+        "name": "Fog Bank",
+        "level": 1,
+        "duration": "1 minute/level",
+        "group": "WEATHER",
+        "description": "Clould blocks all sight past 5 feet.  Concealment at 5 feet.  Boost: Can move burst version 10 feet/round as swift action.",
+        "target": ["BARRIER", "BURST"]
+    },
+    {
+        "name": "Wind Blast",
+        "level": 3,
+        "duration": "1 round",
+        "group": "WEATHER",
+        "description": "Blast of wind affects Large and smaller creatures",
+        "target": ["LINE"]
+    },
+    {
+        "name": "Blizzard",
+        "level": 3,
+        "duration": "1 round/level",
+        "group": "WEATHER",
+        "description": "Heavy snow.  Limits vision to 5 feet.  Difficult terrain.  Boost: 2d6 cold damage each round at end of creatures turn. +1 level.",
+        "target": []
+    },
+
+
+    {
         "name": "Unmake",
         "level": 5,
         "duration": "instantaneous",
