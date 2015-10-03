@@ -83,7 +83,7 @@ public class Gui {
 
     fileMenu.addSeparator();
     fileMenu.add(new BasicAction("Exit") {
-        { acceleratorKey('e'); }
+        { acceleratorKey('x'); }
         @Override public void actionPerformed(ActionEvent evt) {
           if (JOptionPane.showConfirmDialog(frame,
                                             "Really exit?",

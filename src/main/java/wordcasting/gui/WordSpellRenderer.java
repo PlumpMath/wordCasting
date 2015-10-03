@@ -44,9 +44,13 @@ public class WordSpellRenderer
     WordSpellColumns which = WordSpellColumns.values()[column];
     String text = which.getDisplayValue(spell);
     setText(text);
-    setBackground(colors.get(spell.getGroup()));
+    setBackground(getSpellColor(spell));
     setToolTipText(spell.getDescription());
     return this;
+  }
+
+  public Color getSpellColor(WordSpell spell) {
+    return colors.get(spell.getGroup());
   }
 
   private final Map<WordSpell.Group, Color> colors;

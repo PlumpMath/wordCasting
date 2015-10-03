@@ -9,7 +9,7 @@
     },
 
     {
-        "name": "Corrosive Bold",
+        "name": "Corrosive Bolt",
         "level": 2,
         "duration": "2 rounds",
         "group": "ACID",
@@ -62,6 +62,14 @@
         "duration": "1 minute/level",
         "group": "ANIMAL",
         "description": "Animal or magical beast will not attack.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Wild Lure",
+        "level": 2,
+        "duration": "1 minute/level",
+        "group": "ANIMAL",
+        "description": "Animal or magic beast defends caster and does not attack allies.",
         "target": ["SELECTED"]
     },
     {
@@ -257,17 +265,43 @@
         "description": "Approach, Drop, Fall, Flee or Halt.  Boost: any target word, +3 levels.",
         "target": ["SELECTED"]
     },
+    {
+        "name": "Complex Order",
+        "level": 3,
+        "duration": "10 minutes/level",
+        "group": "COMMAND",
+        "description": "Target follows casters instructions as best possible.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Crush Will",
+        "level": 5,
+        "duration": "1 round/level",
+        "group": "COMMAND",
+        "description": "Target obeys any commands from caster via mental link.",
+        "target": ["SELECTED"]
+    },
 
 
 
     {
-        "name": "Accerate",
+        "name": "Accelerate",
         "level": 2,
         "duration": "1 round/level",
         "group": "TIME",
         "description": "Extra move action.  Boost: Extra attack during full attack instead of extra move.",
         "target": ["SELECTED"]
     },
+    {
+        "name": "Control Time",
+        "level": 9,
+        "duration": "instantaneous",
+        "group": "TIME",
+        "description": "Take 1d4 standard actions before time resumes.",
+        "target": ["SELECTED"]
+    },
+
+
     {
         "level": 0,
         "name": "Cramp",
@@ -283,6 +317,14 @@
         "group": "CONCEALING",
         "description": "Invisibly until attacks.  Boost: remains invisible if attacks.",
         "target": ["SELECTED"]
+    },
+    {
+        "name": "Unseen Shell",
+        "level": 4,
+        "duration": "1 minute/level",
+        "group": "CONCEALING",
+        "description": "Creatures and objects become invisible if the do not attack.  Boost: Can attack.  +2 levels.",
+        "target": ["BURST"]
     },
     {
         "name": "Disappear",
@@ -301,6 +343,51 @@
         "target": ["SELECTED"]
     },
     {
+        "name": "Grave Bane",
+        "level": 4,
+        "duration": "1 minute/level",
+        "group": "DEATH",
+        "description": "+4 bonus vs death spells and death magic effets.  Cannot gain negative levels.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Life Leach",
+        "level": 4,
+        "duration": "1 hour/level",
+        "group": "DEATH",
+        "description": "1d4 negative levels.  Boost: levels are permanent.  +5 levels.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Slay",
+        "level": 6,
+        "duration": "instantaneous",
+        "group": "DEATH",
+        "description": "10/level damage or 3d6+1/level on save.",
+        "target": ["SELECTED"]
+    },
+
+
+
+
+
+    {
+        "name": "Sense Magic",
+        "level": 0,
+        "duration": "concentration, up to 1 minute/level",
+        "group": "DETECTION",
+        "description": "Determine number,location and school of auras.",
+        "target": ["CONE"]
+    },
+    {
+        "name": "Sense Thoughts",
+        "level": 2,
+        "duration": "concentration, up to 1 minute/level",
+        "group": "DETECTION",
+        "description": "Read surface thoughts of other creatures.",
+        "target": ["CONE"]
+    },
+    {
         "name": "Sense Hidden",
         "level": 2,
         "duration": "Concentration, up to 1 minute/level",
@@ -309,6 +396,15 @@
         "target": ["CONE"]
     },
     {
+        "name": "Sense Alignment",
+        "level": 1,
+        "duration": "concentration, up to 1 minute/level",
+        "group": "DETECTION",
+        "description": "Locate source of one aligment.  Boost: 2 or all alignments, +1 or 2 levels.",
+        "target": ["CONE"]
+    },
+
+    {
         "name": "Suppress",
         "level": 2,
         "duration": "1 minute/level",
@@ -316,6 +412,25 @@
         "description": "Suppress one spell on a willing target with caster level check.  Boost: target unwilling creature, +1 level",
         "target": ["SELECTED"]
     },
+    {
+        "name": "Negation",
+        "level": 8,
+        "duration": "1 round/level",
+        "group": "DISPELLING",
+        "description": "Magic does not function.  Summoned and incorporeal creatures are excluded.",
+        "target": ["BURST"]
+    },
+    {
+        "name": "Resist Arcana",
+        "level": 5,
+        "duration": "1 minute/level",
+        "group": "DISPELLING",
+        "description": "SR 12+level.",
+        "target": ["SELECTED"]
+    },
+
+
+
     {
         "name": "Far Sight",
         "level": 3,
@@ -365,6 +480,22 @@
         "target": []
     },
     {
+        "name": "Thunder Strike",
+        "level": 8,
+        "duration": "instantaneous",
+        "group": "ELECTRICITY",
+        "description": "1d8/level electricity damage and deafened.",
+        "target": []
+    },
+    {
+        "name": "Spook",
+        "level": 1,
+        "duration": "1d4 rounds",
+        "group": "FEAR",
+        "description": "Target with 4 or less hit dice becomes frightened.",
+        "target": ["SELECTED"]
+    },
+    {
         "name": "Terror",
         "level": 4,
         "duration": "1 round/level",
@@ -388,6 +519,16 @@
         "description": "1d4 fire damage",
         "target": []
     },
+    {
+        "name": "Inferno",
+        "level": 8,
+        "duration": "instantaneous",
+        "group": "FIRE",
+        "description": "1d8/level fire damage.",
+        "target": []
+    },
+
+
 
 
     {
@@ -415,6 +556,14 @@
         "target": []
     },
     {
+        "name": "True Fire",
+        "level": 9,
+        "duration": "instantaneous",
+        "group": "FIRE",
+        "description": "1d6/level fire damage.",
+        "target": ["SELECTED"]
+    },
+    {
         "name": "Unfetter",
         "level": 6,
         "duration": "1 round/level",
@@ -422,6 +571,26 @@
         "description": "Reverses gravity",
         "target": ["SELECTED"]
     },
+    {
+        "name": "Lift",
+        "level": 0,
+        "duration": "concentration",
+        "group": "GRAVITY",
+        "description": "Move 5 pound object.",
+        "target": ["PERSONAL"]
+    },
+    {
+        "name": "Repulse",
+        "level": 8,
+        "duration": "1 round/level",
+        "group": "GRAVITY",
+        "description": "Gravity sends everything to the edge.  Flying creatures can try to enter.  Caster immune. Boost: Specify other creatures that are immune.",
+        "target": ["BURST"]
+    },
+
+
+
+
     {
         "name": "Soothing Touch",
         "level": 0,
@@ -471,7 +640,7 @@
         "target": ["BURST"]
     },
     {
-        "name": "GLOOM",
+        "name": "Gloom",
         "level": 2,
         "duration": "1 minute/level",
         "group": "ILLUMINATION",
@@ -486,6 +655,16 @@
         "description": "30 feet light increases by one step",
         "target": ["BURST"]
     },
+    {
+        "name": "Radiance",
+        "level": 1,
+        "duration": "10 minutes/level",
+        "group": "ILLUMINATION",
+        "description": "Immobile torch.",
+        "target": ["BURST"]
+    },
+
+
     {
         "name": "Purify",
         "level": 4,
@@ -502,6 +681,16 @@
         "description": "Raises dead target",
         "target": []
     },
+    {
+        "name": "Life Touch",
+        "level": 8,
+        "duration": "instantaneous",
+        "group": "LIFE",
+        "description": "Raises a creature.",
+        "target": ["SELECTED"]
+    },
+
+
     {
         "name": "Cramp",
         "level": 0,
@@ -583,7 +772,7 @@
         "target": ["SELECTED"]
     },
     {
-        "name": "DimensionalJump",
+        "name": "Dimensional Jump",
         "level": 5,
         "duration": "instantaneous",
         "group": "TELEPORTATION",
@@ -597,6 +786,14 @@
         "group": "TELEPORTATION",
         "description": "Teleports willing targets to another plane",
         "target": ["SELECTED"]
+    },
+    {
+        "name": "Dimensional Gate",
+        "level": 9,
+        "duration": "1 round/level",
+        "group": "TELEPORTATION",
+        "description": "Open gate to another plane.",
+        "target": ["BURST"]
     },
     {
         "name": "Fleet",
@@ -687,6 +884,14 @@
         "target": ["BARRIER", "BURST"]
     },
     {
+        "name": "Storm Master",
+        "level": 7,
+        "duration": "1 hour/level",
+        "description": "Control weather in 1 mile radius.  Boost: 5, not 10, minutes to change weather.",
+        "group": "WEATHER",
+        "target": ["PERSONAL"]
+    },
+    {
         "name": "Wind Blast",
         "level": 3,
         "duration": "1 round",
@@ -705,11 +910,179 @@
 
 
     {
+        "name": "Beacon",
+        "level": 0,
+        "duration": "1 hour/level",
+        "group": "DIVINATION",
+        "description": "Know direction and distance to point where spell was cast.",
+        "target": ["PERSONAL"]
+    },
+    {
+        "name": "Float",
+        "level": 2,
+        "duration": "1 minute/level",
+        "group": "FLIGHT",
+        "description": "Float with vertical speed.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Glide",
+        "level": 1,
+        "duration": "1 round/level",
+        "group": "FLIGHT",
+        "description": "Fall at 20 feet/round.  Move up to 20/5 fallen.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Soar",
+        "level": 3,
+        "duration": "1 minute/level",
+        "group": "FLIGHT",
+        "description": "Fly speed of 60.",
+        "target": ["SELECTED"]
+    },
+
+
+    {
+        "name": "Bleeding Wounds",
+        "level": 0,
+        "duration": "instantaneous",
+        "group": "WOUNDING",
+        "description": "Dying target takes 1 bleed damage/turn.  Boost: 1d3 damage, +1 level",
+        "target": []
+    },
+    {
+        "name": "Elder Wound",
+        "level": 4,
+        "duration": "instantaneous",
+        "group": "WOUNDING",
+        "description": "4d6+1/level healing.  Boost: 4d8+1/level.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Greater Wound",
+        "level": 3,
+        "duration": "instantaneous",
+        "group": "WOUNDING",
+        "description": "3d6+1/level healing.  Boost: 3d8+1/level.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Moderate Wound",
+        "level": 2,
+        "duration": "instantaneous",
+        "group": "WOUNDING",
+        "description": "2d6+1/level healing.  Boost: 2d8+1/level.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Lesser Wound",
+        "level": 1,
+        "duration": "instantaneous",
+        "group": "WOUNDING",
+        "description": "1d6+1/level healing.  Boost: 1d8+1/level.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Damage",
+        "level": 2,
+        "duration": "instantaneous",
+        "group": "DESTRUCTION",
+        "description": "Object loses half of maximum hit points and is broken.",
+        "target": ["SELECTED"]
+    },
+
+    {
+        "name": "Catastrophe",
+        "level": 9,
+        "duration": "1 round/level",
+        "group": "DESTRUCTION",
+        "description": "Heavy rain and hail.  20% miss chance, no ranged attacks.  4d6 damage/round.  1d6/level bolts.",
+        "target": ["BURST"]
+    },
+    {
+        "name": "Rumble",
+        "level": 8,
+        "duration": "1 round",
+        "group": "DESTRUCTION",
+        "description": "Earthquake. Prone and 8d6 damage.  Tunnels collapse with landslide.",
+        "target": ["BURST"]
+    },
+
+
+    {
+        "name": "Decipher",
+        "level": 0,
+        "duration": "1 minute/level",
+        "group": "LANGUAGE",
+        "description": "Target can read one language. Boost: Selected target, +1 level.",
+        "target": ["PERSONAL"]
+    },
+    {
+        "name": "Translate",
+        "level": 3,
+        "description": "Target can read, write, speak and understand one language.",
+        "group": "LANGUAGE",
+        "duration": "10 minutes/level",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Far Casting",
+        "level": 5,
+        "duration": "concentration",
+        "group": "LANGUAGE",
+        "description": "Communicate with willing creature.  Boost: Selected target.  +1 level.",
+        "target": ["PERSONAL"]
+    },
+
+    {
+        "name": "Echo",
+        "level": 0,
+        "duration": "1 round/level",
+        "group": "ILLUSION",
+        "description": "Create sound at a location.",
+        "target": ["BURST"]
+    },
+    {
+        "name": "Glimmering",
+        "level": 3,
+        "duration": "1 round/level",
+        "group": "ILLUSION",
+        "description": "Illusion with visual elements.",
+        "target": ["BURST"]
+    },
+
+
+    {
+        "name": "Force Blast",
+        "level": 5,
+        "duration": "instantaneous",
+        "group": "FORCE",
+        "description": "1d6/level (max 10d6) force damage.",
+        "target": []
+    },
+    {
+        "name": "Force Bolt",
+        "level": 2,
+        "duration": "instantaneous",
+        "group": "FORCE",
+        "description": "1d4/level force damage.",
+        "target": ["SELECTED"]
+    },
+    {
         "name": "Unmake",
         "level": 5,
         "duration": "instantaneous",
         "group": "DISPELLING",
         "description": "Dispell all spells on willing target.",
+        "target": ["SELECTED"]
+    },
+    {
+        "name": "Servitor",
+        "level": 1,
+        "duration": "1 round/level",
+        "group": "SUMMONING",
+        "description": "Summon monster.  Boost: 1d4+1 creatures",
         "target": ["SELECTED"]
     }
 

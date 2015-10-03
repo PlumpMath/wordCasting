@@ -1,5 +1,7 @@
 package wordcasting.gui;
 
+import com.google.common.collect.ArrayListMultimap;
+import com.google.common.collect.ListMultimap;
 import java.awt.BorderLayout;
 import java.awt.Dialog;
 import java.awt.FlowLayout;
@@ -7,13 +9,17 @@ import java.awt.GridLayout;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.HashSet;
+import java.util.Map;
 import javax.swing.BorderFactory;
 import javax.swing.Box;
 import javax.swing.JButton;
 import javax.swing.JCheckBox;
+import javax.swing.JComponent;
 import javax.swing.JDialog;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
+import javax.swing.border.EtchedBorder;
 import wordcasting.model.Model;
 import wordcasting.model.WordSpell;
 
@@ -23,25 +29,43 @@ class SelectSpellsButton extends JButton {
 
     Collection<String> selectedSpells = new HashSet<>();
     JDialog dialog = new JDialog(owner, "Select Spells");
-    JPanel panel = new JPanel(new GridLayout(8, 0));
+    JComponent panel = Box.createVerticalBox(); // new JPanel(new GridLayout(8, 0));
     dialog.add(panel, BorderLayout.CENTER);
 
+    // Groups spells by level
+    ListMultimap<Integer, WordSpell> spellsByLevel =
+       ArrayListMultimap.<Integer, WordSpell>create();
+    model.getSpells().values().stream().
+      forEachOrdered((spell) -> spellsByLevel.put(spell.getLevel(), spell));
+
+    // Add them to the gui
+    WordSpellRenderer renderer = new WordSpellRenderer();
     Collection<JCheckBox> checkboxes = new ArrayList<>();
-    for (WordSpell spell: model.getSpells().values()) {
-      JCheckBox check = new JCheckBox(spell.getName());
-      check.addActionListener((evt) -> {
-          if (check.isSelected()) {
-            selectedSpells.add(spell.getName());
-          } else {
-            selectedSpells.remove(spell.getName());
-          }
-        });
-      if (model.getSpellList().contains(spell.getName())) {
-        // Use doClick instead of setSelected to trigger the action
-        check.doClick(0);
+    for(Map.Entry<Integer, Collection<WordSpell>> entry:
+          spellsByLevel.asMap().entrySet()) {
+      // Wrap the boxes after adding 8 spells.
+      JComponent checksPanel = new JPanel(new GridLayout(0, 8));// new JPanel(new WrapLayout());
+      panel.add(checksPanel);
+      checksPanel.setBorder(BorderFactory.createTitledBorder("Level " + entry.getKey()));
+
+      for (WordSpell spell: entry.getValue()) {
+        JCheckBox check = new JCheckBox(spell.getName());
+        check.setToolTipText(spell.getDescription());
+        check.setBackground(renderer.getSpellColor(spell));
+        checksPanel.add(check);
+        check.addActionListener((evt) -> {
+            if (check.isSelected()) {
+              selectedSpells.add(spell.getName());
+            } else {
+              selectedSpells.remove(spell.getName());
+            }
+          });
+        if (model.getSpellList().contains(spell.getName())) {
+          // Use doClick instead of setSelected to trigger the action
+          check.doClick(0);
+        }
+        checkboxes.add(check);
       }
-      checkboxes.add(check);
-      panel.add(check);
     }
 
     Box controlPanel = Box.createHorizontalBox();
