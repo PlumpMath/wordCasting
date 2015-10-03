@@ -4,8 +4,11 @@ import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk7.Jdk7Module;
 import com.fasterxml.jackson.module.paramnames.ParameterNamesModule;
+import java.io.BufferedWriter;
 import java.io.File;
+import java.io.FileWriter;
 import java.io.IOException;
+import java.io.Writer;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Comparator;
@@ -23,7 +26,7 @@ public class Model {
   public Model() throws IOException {
     listeners = new ArrayList<>();
 
-    ObjectMapper mapper = new ObjectMapper();
+    mapper = new ObjectMapper();
     mapper.registerModule(new Jdk7Module());
     mapper.registerModule(new ParameterNamesModule());
 
@@ -71,8 +74,48 @@ public class Model {
       l.modelChanged(new ModelEvent(this));
   }
 
+  /**
+   * Save the current spell list to disk
+   * @param name The name of the file.  The appropriate suffix is added if it is
+   * missing.
+   * @throws IOException if an error occurs writing the file
+   */
+  public void saveSpellList(String name) throws IOException {
+    if (!name.endsWith("." + SPELL_LIST_EXTENSION)) {
+      name += "." + SPELL_LIST_EXTENSION;
+    }
+
+    try (Writer writer = new BufferedWriter(new FileWriter(name)))
+        {
+          mapper.writeValue(writer, spellList);
+        }
+  }
+
+  /**
+   * Load the current spell list to disk
+   * @param name The name of the file.  The appropriate suffix is added if it is
+   * missing.
+   * @throws IOException if an error occurs writing the file.  If this happens,
+   * the spell list is unchanged.
+   */
+  public void loadSpellList(String name) throws IOException {
+    List<String> list =
+      mapper.readValue(new File(name), new TypeReference<List<String>>(){});
+
+    // Do this after reading the data, in case the read throws an exceptions.
+    spellList.clear();
+    spellList.addAll(list);
+
+    fireModelChangedEvent();
+
+  }
   private final Collection<ModelListener> listeners;
   private final Map<String, WordSpell> spells;
   private final Collection<String> spellList;
+  private final ObjectMapper mapper;
+
+  /** Extension of files that hold a spell list */
+  public final static String SPELL_LIST_EXTENSION = "spellList";
 }
+
 
