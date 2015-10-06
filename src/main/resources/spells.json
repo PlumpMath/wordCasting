@@ -1084,6 +1084,24 @@
         "group": "SUMMONING",
         "description": "Summon monster.  Boost: 1d4+1 creatures",
         "target": ["SELECTED"]
+    },
+
+    // Spells added from bloodlines
+    {
+        "name": "*Bless",
+        "level": 1,
+        "duration": "1 minute/level",
+        "group": "BOLSTER",
+        "description": "+1 to hit and save vs fear",
+        "target": []
+    },
+    {
+        "name": "*Magic Circle vs Alignment",
+        "level": 3,
+        "duration": "10 minutes/level",
+        "group": "ALIGNMENT",
+        "description": "+2 AC and saves vs opposed alignment",
+        "target": []
     }
 
 ]

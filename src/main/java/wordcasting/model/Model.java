@@ -1,5 +1,7 @@
 package wordcasting.model;
 
+import com.fasterxml.jackson.core.JsonParser.Feature;
+import com.fasterxml.jackson.core.JsonParser;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.fasterxml.jackson.datatype.jdk7.Jdk7Module;
@@ -27,6 +29,7 @@ public class Model {
     listeners = new ArrayList<>();
 
     mapper = new ObjectMapper();
+    mapper.configure(JsonParser.Feature.ALLOW_COMMENTS, true);
     mapper.registerModule(new Jdk7Module());
     mapper.registerModule(new ParameterNamesModule());
 
@@ -60,18 +63,22 @@ public class Model {
    * Set the selected spells
    */
   public void setSpellList(Collection<String> newSpells) {
+    int oldNumSpells = spellList.size();
     spellList.clear();
     spellList.addAll(newSpells);
-    fireModelChangedEvent();
+
+    fireModelChangedEvent(spellList.size(),
+                          oldNumSpells);
   }
 
   public void addModelListener(ModelListener l) {
     if (!listeners.contains(l)) listeners.add(l);
   }
 
-  private void fireModelChangedEvent() {
+  private void fireModelChangedEvent(int numSpells,
+                                     int oldNumSpells) {
     for (ModelListener l: listeners)
-      l.modelChanged(new ModelEvent(this));
+      l.modelChanged(new ModelEvent(this, numSpells, oldNumSpells));
   }
 
   /**
@@ -103,10 +110,11 @@ public class Model {
       mapper.readValue(new File(name), new TypeReference<List<String>>(){});
 
     // Do this after reading the data, in case the read throws an exceptions.
+    int oldNumSpells = spellList.size();
     spellList.clear();
     spellList.addAll(list);
 
-    fireModelChangedEvent();
+    fireModelChangedEvent(spellList.size(), oldNumSpells);
 
   }
   private final Collection<ModelListener> listeners;

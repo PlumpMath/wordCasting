@@ -12,6 +12,7 @@ public class WordSpell {
     ARMOR,
     BINDING,
     BODY,
+    BOLSTER,
     CHANGE,
     COLD,
     COMMAND,

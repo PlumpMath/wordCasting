@@ -46,10 +46,17 @@ public class Gui {
       table.getColumnModel().getColumn(column.ordinal()).setPreferredWidth(column.getWidth());
     }
 
+    model.addModelListener((evt) -> {
+        if (evt.getNumSpells() > evt.getOldNumSpells()) {
+          tableModel.fireTableRowsInserted(0, evt.getNumSpells()-1);
+        } else {
+          tableModel.fireTableRowsDeleted(0, evt.getOldNumSpells()-1);
+        }});
+
     frame.add(new JScrollPane(table), BorderLayout.CENTER);
 
     TableRowSorter<WordCastingTableModel> sorter =
-      new WordSpellTableRowSorter(model, tableModel);
+      new WordSpellTableRowSorter(tableModel);
 
     sorter.setRowFilter(new WordSpellRowFilter(model));
     table.setRowSorter(sorter);
