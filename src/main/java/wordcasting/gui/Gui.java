@@ -1,32 +1,36 @@
 package wordcasting.gui;
 
 import java.awt.BorderLayout;
-import java.awt.Frame;
 import java.awt.event.ActionEvent;
 import java.io.File;
 import java.io.IOException;
-import javax.swing.AbstractAction;
-import javax.swing.Action;
+import java.util.prefs.Preferences;
 import javax.swing.JFileChooser;
-import javax.swing.JFrame;
 import javax.swing.JFrame;
 import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JOptionPane;
 import javax.swing.JScrollPane;
 import javax.swing.JTable;
-import javax.swing.KeyStroke;
-import javax.swing.RowSorter;
 import javax.swing.SwingUtilities;
 import javax.swing.filechooser.FileNameExtensionFilter;
 import javax.swing.table.TableCellRenderer;
 import javax.swing.table.TableRowSorter;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import wordcasting.model.Model;
 
 public class Gui {
   private final JFrame frame;
   private final Model model;
   private JFileChooser spellListChooser;
+
+  private final static String SPELL_LIST_DIRECTORY = "spellListDirectory";
+
+
+  private final static Logger logger =
+    LoggerFactory.getLogger(Gui.class);
+
 
   public Gui(Model model) throws IOException {
     frame = new JFrame("Wordcasting");
@@ -105,7 +109,7 @@ public class Gui {
 
   private JFileChooser getSpellListChooser() {
     if (null == spellListChooser) {
-      spellListChooser = new JFileChooser();
+      spellListChooser = new JFileChooser(getPreferenceOrElse(SPELL_LIST_DIRECTORY, "."));
       FileNameExtensionFilter filter =
         new FileNameExtensionFilter("Spell Lists", Model.SPELL_LIST_EXTENSION);
       spellListChooser.setFileFilter(filter);
@@ -123,6 +127,8 @@ public class Gui {
         chooser.getSelectedFile().getName();
       try {
         model.saveSpellList(name);
+        setPreference(SPELL_LIST_DIRECTORY,
+                      chooser.getCurrentDirectory().getAbsolutePath());
       } catch (IOException exc) {
         exc.printStackTrace();
         JOptionPane.showMessageDialog(frame,
@@ -144,6 +150,8 @@ public class Gui {
         chooser.getSelectedFile().getName();
       try {
         model.loadSpellList(name);
+        setPreference(SPELL_LIST_DIRECTORY,
+                      chooser.getCurrentDirectory().getAbsolutePath());
       } catch (IOException exc) {
         exc.printStackTrace();
         JOptionPane.showMessageDialog(frame,
@@ -154,6 +162,34 @@ public class Gui {
                                       JOptionPane.ERROR_MESSAGE);
       }
     }
+  }
+
+  /**
+   * Get a stored preference
+   * @param key String to look up value
+   * @param fallback Default value if there is no value stored
+   */
+  private String getPreferenceOrElse(String key,
+                                     String fallback) {
+    Preferences prefs = Preferences.userNodeForPackage(getClass());
+    String result = prefs.get(key, null);
+    if (null == result) {
+      logger.info("Key {} does not exist in user preferences");
+      prefs = Preferences.systemNodeForPackage(getClass());
+      result = prefs.get(key, fallback);
+    }
+    return result;
+  }
+
+  /**
+   * Set a stored preference
+   * @param key String to look up value
+   * @param value Associated value
+   */
+  private void setPreference(String key,
+                             String value) {
+    Preferences prefs = Preferences.userNodeForPackage(getClass());
+    prefs.put(key, value);
   }
 
   public void show() {
