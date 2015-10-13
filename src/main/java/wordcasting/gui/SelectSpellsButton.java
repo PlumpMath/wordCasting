@@ -22,8 +22,13 @@ import javax.swing.JPanel;
 import javax.swing.border.EtchedBorder;
 import wordcasting.model.Model;
 import wordcasting.model.WordSpell;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 class SelectSpellsButton extends JButton {
+  private final static Logger logger =
+    LoggerFactory.getLogger(SelectSpellsButton.class);
+
   SelectSpellsButton(Model model, JFrame owner) {
     super("Select Spells");
 
@@ -31,6 +36,7 @@ class SelectSpellsButton extends JButton {
     JDialog dialog = new JDialog(owner, "Select Spells");
     JComponent panel = Box.createVerticalBox(); // new JPanel(new GridLayout(8, 0));
     dialog.add(panel, BorderLayout.CENTER);
+
 
     // Groups spells by level
     ListMultimap<Integer, WordSpell> spellsByLevel =
@@ -64,6 +70,10 @@ class SelectSpellsButton extends JButton {
           // Use doClick instead of setSelected to trigger the action
           check.doClick(0);
         }
+        model.addModelListener((evt) -> {
+                if (check.isSelected() != model.getSpellList().contains(spell.getName())) {
+                    check.doClick();
+                }});
         checkboxes.add(check);
       }
     }
