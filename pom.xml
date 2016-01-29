@@ -53,6 +53,7 @@
         <version>1.4.0</version>
         <executions>
           <execution>
+	    <phase>package</phase>
             <goals>
               <goal>java</goal>
             </goals>
