@@ -19,7 +19,7 @@
     {
         "name": "Acid Wave",
         "level": 4,
-        "duration": "2 rounds",
+        "duration": "1 round/level",
         "group": "ACID",
         "description": "1d6/level acid damage (max 10d6).  Sickened for 1 round/level, or 1 round on save.",
         "target": []
